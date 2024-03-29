@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\aaron\\RiderProjects\\SkillRecommendation\\SkillRecommendation.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SkillRecommendation.UI.bundle.scp.css",
+      "PackagePath": "staticwebassets\\SkillRecommendation.UI.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\aaron\\RiderProjects\\SkillRecommendation\\SkillRecommendation.UI\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\aaron\\RiderProjects\\SkillRecommendation\\SkillRecommendation.UI\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SkillRecommendation.UI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SkillRecommendation.UI.props",
+      "PackagePath": "build\\SkillRecommendation.UI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SkillRecommendation.UI.props",
+      "PackagePath": "buildMultiTargeting\\SkillRecommendation.UI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SkillRecommendation.UI.props",
+      "PackagePath": "buildTransitive\\SkillRecommendation.UI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

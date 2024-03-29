@@ -1,0 +1,94 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<MudGrid>
+    @* FORM *@
+    <MudItem xs="12" md="6">
+        <MudTextField T="string" Label="Name" @bind-Value="@name"/>
+
+        <MudSelect T="string" Label="Experience" @bind-Value="selectedExperienceLevel">
+            @foreach (string experienceLevel in experienceLevels)
+            {
+                <MudSelectItem Value="@experienceLevel">@experienceLevel</MudSelectItem>
+            }
+        </MudSelect>
+
+        <MudSelect T="string" Label="Roles" @bind-Value="selectedRole">
+            @foreach (string role in exampleRoles)
+            {
+                <MudSelectItem Value="@role">@role</MudSelectItem>
+            }
+        </MudSelect>
+        
+        <MudButton ButtonType="ButtonType.Submit" OnClick="@GetRecommendations" />
+    </MudItem>
+
+    <MudItem xs="12" md="6">
+        @* Role Summary *@
+        <MudItem xs="12">
+            <MudText>
+                @exampleRoleSummary
+            </MudText>
+        </MudItem>
+
+        @* Important Skills *@
+        <MudItem xs="12">
+            <MudList>
+
+                @foreach (string skill in exampleSkillSummary)
+                {
+                    <MudListItem Text="@skill"/>
+                }
+            </MudList>
+        </MudItem>
+
+        @* Market Data *@
+        <MudItem xs="12">
+            <MudList>
+                @foreach (string marketData in exampleMarketData)
+                {
+                    <MudListItem Text="@marketData"/>
+                }
+            </MudList>
+        </MudItem>
+
+        @* Qualifications *@
+        <MudItem xs="12">
+            <MudList>
+                @foreach (string qualification in exampleQualifications)
+                {
+                    <MudListItem Text="@qualification"/>
+                }
+            </MudList>
+        </MudItem>
+    </MudItem>
+
+</MudGrid>
+
+@code{
+    private string[] exampleRoles = ["Software Engineer", "Cloud Engineer", "AI/ML Engineer"];
+    private string exampleRoleSummary = string.Empty;
+    private string[] exampleSkillSummary = [];
+    private string[] exampleMarketData = [];
+    private string[] exampleQualifications = [];
+
+    private string name = string.Empty;
+    private string selectedExperienceLevel = string.Empty;
+    private string[] experienceLevels = ["Student", "Intern", "1-2 years", "3-5 years", "5-10 years", "10+ years"];
+    private string selectedRole = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private void GetRecommendations()
+    {
+        exampleRoleSummary = "This is a really cool job if you have senior level experience but are okay with being paid like an intern. I work culture is great and we do pizza parties.";
+        exampleSkillSummary = ["Java", "Python", "Agile"];
+        exampleMarketData = ["Average Salary: $150,000", "Open Job Listings: 3235"];
+        exampleQualifications = ["Bachelor's Degree, 10 years of experience using GPT-4, Rockstar software engineer"];
+        return;
+    }
+}
