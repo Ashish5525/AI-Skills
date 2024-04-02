@@ -1,4 +1,5 @@
 TODO Prettify
 
-Git Setup
-https://git-lfs.com/
+TODO Add reference to dataset
+
+TODO List resources and tech stack
