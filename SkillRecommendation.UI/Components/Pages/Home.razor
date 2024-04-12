@@ -2,81 +2,103 @@
 
 <PageTitle>Home</PageTitle>
 
-<MudGrid>
+<MudGrid Class="d-flex align-center mt-4" Justify="Justify.SpaceAround">
     @* FORM *@
     <MudItem xs="12" md="6">
-        <MudTextField T="string" Label="Name" @bind-Value="@name"/>
-
-        <MudSelect T="string" Label="Experience" @bind-Value="selectedExperienceLevel">
-            @foreach (string experienceLevel in experienceLevels)
-            {
-                <MudSelectItem Value="@experienceLevel">@experienceLevel</MudSelectItem>
-            }
-        </MudSelect>
-
-        <MudSelect T="string" Label="Roles" @bind-Value="selectedRole">
-            @foreach (string role in exampleRoles)
-            {
-                <MudSelectItem Value="@role">@role</MudSelectItem>
-            }
-        </MudSelect>
-        
-        <MudButton ButtonType="ButtonType.Submit" OnClick="@GetRecommendations" />
+        <MudForm @ref="_form">
+            <MudTextField T="string"
+                          Label="Name"
+                          @bind-Value="@_name"
+                          Required="true"
+                          RequiredError="Must enter name."
+                          Clearable="true"/>
+            
+            <MudSelect T="string"
+                       Label="Experience"
+                       @bind-Value="_selectedExperienceLevel"
+                       Required="true"
+                       RequiredError="Must select experience level."
+                       Clearable="true">
+                @foreach (string experienceLevel in _experienceLevels)
+                {
+                    <MudSelectItem T="string" Value="@experienceLevel">@experienceLevel</MudSelectItem>
+                }
+            </MudSelect>
+            
+            <MudSelect T="string"
+                       Label="Roles"
+                       @bind-Value="_selectedRole"
+                       Required="true"
+                       RequiredError="Must select desired role."
+                       Clearable="true">
+                @foreach (string role in _exampleRoles)
+                {
+                    <MudSelectItem T="string" Value="@role">@role</MudSelectItem>
+                }
+            </MudSelect>
+            
+            <MudButton Variant="Variant.Outlined" OnClick="@GetRecommendations">Submit</MudButton>
+        </MudForm>
     </MudItem>
+    
+    <MudItem xs="12" md="6" Class="d-flex flex-column gap-4">
+            @* Role Summary *@
+            <MudItem xs="12" Class="border-solid border-2 mud-border-primary">
+                <MudText>Role Summary</MudText>
+                <MudText>
+                    @_exampleRoleSummary
+                </MudText>
+            </MudItem>
 
-    <MudItem xs="12" md="6">
-        @* Role Summary *@
-        <MudItem xs="12">
-            <MudText>
-                @exampleRoleSummary
-            </MudText>
+            @* Important Skills *@
+            <MudItem xs="12" Class="border-solid border-2 mud-border-primary">
+                <MudText>Important Skills</MudText>
+                <MudList>
+                    @foreach (string skill in _exampleSkillSummary)
+                    {
+                        <MudListItem Text="@skill"/>
+                    }
+                </MudList>
+            </MudItem>
+
+            @* Market Data *@
+            <MudItem xs="12" Class="border-solid border-2 mud-border-primary">
+                <MudText>Market Data</MudText>
+                <MudList>
+                    @foreach (string marketData in _exampleMarketData)
+                    {
+                        <MudListItem Text="@marketData"/>
+                    }
+                </MudList>
+            </MudItem>
+
+            @* Qualifications *@
+            <MudItem xs="12" Class="border-solid border-2 mud-border-primary">
+                <MudText>Qualifications</MudText>
+                <MudList>
+                    @foreach (string qualification in _exampleQualifications)
+                    {
+                        <MudListItem Text="@qualification"/>
+                    }
+                </MudList>
+            </MudItem>
         </MudItem>
-
-        @* Important Skills *@
-        <MudItem xs="12">
-            <MudList>
-
-                @foreach (string skill in exampleSkillSummary)
-                {
-                    <MudListItem Text="@skill"/>
-                }
-            </MudList>
-        </MudItem>
-
-        @* Market Data *@
-        <MudItem xs="12">
-            <MudList>
-                @foreach (string marketData in exampleMarketData)
-                {
-                    <MudListItem Text="@marketData"/>
-                }
-            </MudList>
-        </MudItem>
-
-        @* Qualifications *@
-        <MudItem xs="12">
-            <MudList>
-                @foreach (string qualification in exampleQualifications)
-                {
-                    <MudListItem Text="@qualification"/>
-                }
-            </MudList>
-        </MudItem>
-    </MudItem>
 
 </MudGrid>
 
 @code{
-    private string[] exampleRoles = ["Software Engineer", "Cloud Engineer", "AI/ML Engineer"];
-    private string exampleRoleSummary = string.Empty;
-    private string[] exampleSkillSummary = [];
-    private string[] exampleMarketData = [];
-    private string[] exampleQualifications = [];
-
-    private string name = string.Empty;
-    private string selectedExperienceLevel = string.Empty;
-    private string[] experienceLevels = ["Student", "Intern", "1-2 years", "3-5 years", "5-10 years", "10+ years"];
-    private string selectedRole = string.Empty;
+    private MudForm _form;
+    
+    private readonly string[] _exampleRoles = ["Software Engineer", "Cloud Engineer", "AI/ML Engineer"];
+    private string _exampleRoleSummary = string.Empty;
+    private string[] _exampleSkillSummary = [];
+    private string[] _exampleMarketData = [];
+    private string[] _exampleQualifications = [];
+    
+    private string _name = string.Empty;
+    private string _selectedExperienceLevel = string.Empty;
+    private readonly List<string> _experienceLevels = ["Student", "Intern", "1-2 years", "3-5 years", "5-10 years", "10+ years"];
+    private string _selectedRole = string.Empty;
 
     protected override void OnInitialized()
     {
@@ -85,10 +107,14 @@
 
     private void GetRecommendations()
     {
-        exampleRoleSummary = "This is a really cool job if you have senior level experience but are okay with being paid like an intern. I work culture is great and we do pizza parties.";
-        exampleSkillSummary = ["Java", "Python", "Agile"];
-        exampleMarketData = ["Average Salary: $150,000", "Open Job Listings: 3235"];
-        exampleQualifications = ["Bachelor's Degree, 10 years of experience using GPT-4, Rockstar software engineer"];
+        _form.Validate();
+        if (!_form.IsValid) return;
+        
+        _exampleRoleSummary = "This is a really cool job if you have senior level experience but are okay with being paid like an intern. I work culture is great and we do pizza parties.";
+        _exampleSkillSummary = ["Java", "Python", "Agile"];
+        _exampleMarketData = ["Average Salary: $150,000", "Open Job Listings: 3235"];
+        _exampleQualifications = ["Bachelor's Degree, 10 years of experience using GPT-4, Rockstar software engineer"];
+        StateHasChanged();
         return;
     }
 }

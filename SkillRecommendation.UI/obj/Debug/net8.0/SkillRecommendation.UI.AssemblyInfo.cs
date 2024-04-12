@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkillRecommendation.UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d95ca18e86e5480a76c8c01566573a9ee71e1b6c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c41b27a1f2bab94f2c84a3852a99059adce778a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkillRecommendation.UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkillRecommendation.UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
